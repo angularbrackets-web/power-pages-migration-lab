@@ -1,0 +1,17 @@
+[
+  {"id": "F1-01", "rule": "F1", "input": {"category": "Community"}, "expected": 45.5, "note": "base fee Community"},
+  {"id": "F1-03", "rule": "F1", "input": {"category": "Sports"}, "expected": 150.15, "note": "base fee Sports"},
+  {"id": "F1-04", "rule": "F1", "input": {"category": "Festival"}, "expected": {"error": "invalid_category"}, "note": "unknown category"},
+  {"id": "F2-02", "rule": "F2", "input": {"expectedAttendance": 100}, "expected": 0.0, "note": "top of tier 1"},
+  {"id": "F2-04", "rule": "F2", "input": {"expectedAttendance": 250}, "expected": 50.0, "note": "top of tier 2"},
+  {"id": "F2-05", "rule": "F2", "input": {"expectedAttendance": 251}, "expected": 150.0, "note": "bottom of tier 3"},
+  {"id": "F2-07", "rule": "F2", "input": {"expectedAttendance": 501}, "expected": 400.0, "note": "bottom of tier 4"},
+  {"id": "F2-09", "rule": "F2", "input": {"expectedAttendance": -1}, "expected": {"error": "invalid_attendance"}, "note": "negative attendance"},
+  {"id": "F3-01", "rule": "F3", "input": {"category": "Commercial", "expectedAttendance": 100, "isRegisteredNonProfit": true, "isLateException": false}, "expected": 212.75, "note": "non-profit halves base only"},
+  {"id": "F3-02", "rule": "F3", "input": {"category": "Commercial", "expectedAttendance": 300, "isRegisteredNonProfit": true, "isLateException": false}, "expected": 362.75, "note": "surcharge not discounted"},
+  {"id": "F4-01", "rule": "F4", "input": {"category": "Commercial", "expectedAttendance": 100, "isRegisteredNonProfit": false, "isLateException": true}, "expected": 500.5, "note": "late fee added"},
+  {"id": "F5-01", "rule": "F5", "input": {"category": "Sports", "expectedAttendance": 50, "isRegisteredNonProfit": true, "isLateException": false}, "expected": 75.08, "note": "75.075 rounds up to 75.08 (half-up)"},
+  {"id": "F5-02", "rule": "F5", "input": {"category": "Sports", "expectedAttendance": 200, "isRegisteredNonProfit": true, "isLateException": false}, "expected": 125.08, "note": "125.075 rounds up to 125.08"},
+  {"id": "F5-04", "rule": "F5", "input": {"category": "Community", "expectedAttendance": 50, "isRegisteredNonProfit": true, "isLateException": false}, "expected": 25.0, "note": "22.75 raised to the 25.00 minimum"},
+  {"id": "F5-07", "rule": "F5", "input": {"category": "Sports", "expectedAttendance": 600, "isRegisteredNonProfit": true, "isLateException": true}, "expected": 550.08, "note": "all rules at once"}
+]

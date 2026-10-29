@@ -1,0 +1,16 @@
+[
+  {"id": "E1-01", "rule": "E1", "input": {"dateOfBirth": "1990-06-15", "eventDate": "2027-07-01"}, "expected": true, "note": "clearly adult"},
+  {"id": "E1-02", "rule": "E1", "input": {"dateOfBirth": "2009-07-01", "eventDate": "2027-07-01"}, "expected": true, "note": "18th birthday on event date"},
+  {"id": "E1-03", "rule": "E1", "input": {"dateOfBirth": "2009-07-02", "eventDate": "2027-07-01"}, "expected": false, "note": "turns 18 one day after the event"},
+  {"id": "E1-05", "rule": "E1", "input": {"dateOfBirth": "2008-02-29", "eventDate": "2026-02-28"}, "expected": true, "note": "leap-day birth, 18th birthday counts on 28 Feb in non-leap year"},
+  {"id": "E1-06", "rule": "E1", "input": {"dateOfBirth": "2008-02-29", "eventDate": "2026-02-27"}, "expected": false, "note": "leap-day birth, day before"},
+  {"id": "E2-01", "rule": "E2", "input": {"registryNumber": "NB-123456"}, "expected": true, "note": "valid"},
+  {"id": "E2-02", "rule": "E2", "input": {"registryNumber": "NB-12345"}, "expected": false, "note": "five digits"},
+  {"id": "E2-04", "rule": "E2", "input": {"registryNumber": "nb-123456"}, "expected": false, "note": "lower case prefix"},
+  {"id": "E2-06", "rule": "E2", "input": {"registryNumber": "NB-12345A"}, "expected": false, "note": "letter in digits"},
+  {"id": "E2-08", "rule": "E2", "input": {"registryNumber": null}, "expected": false, "note": "null"},
+  {"id": "E2-10", "rule": "E2", "input": {"registryNumber": "NB-123456\n"}, "expected": false, "note": "trailing newline"},
+  {"id": "E3-02", "rule": "E3", "input": {"applicantType": "Individual", "expectedAttendance": 500}, "expected": true, "note": "exactly 500, individual allowed"},
+  {"id": "E3-03", "rule": "E3", "input": {"applicantType": "Individual", "expectedAttendance": 501}, "expected": false, "note": "501 needs an organization"},
+  {"id": "E3-04", "rule": "E3", "input": {"applicantType": "Organization", "expectedAttendance": 501}, "expected": true, "note": "organization allowed"}
+]

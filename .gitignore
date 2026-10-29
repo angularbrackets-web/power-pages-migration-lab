@@ -1,0 +1,8 @@
+bin/
+obj/
+.env
+*.user
+**/org-url-manifest.yml
+node_modules/
+.vs/
+.vscode/

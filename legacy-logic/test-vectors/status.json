@@ -1,0 +1,11 @@
+[
+  {"id": "S1-01", "rule": "S1", "input": {"from": "Draft", "to": "Submitted", "role": "Applicant"}, "expected": true, "note": "allowed"},
+  {"id": "S1-02", "rule": "S1", "input": {"from": "Submitted", "to": "UnderReview", "role": "Reviewer"}, "expected": true, "note": "allowed"},
+  {"id": "S1-07", "rule": "S1", "input": {"from": "Rejected", "to": "UnderReview", "role": "Admin"}, "expected": true, "note": "allowed"},
+  {"id": "S1-08", "rule": "S1", "input": {"from": "Draft", "to": "Submitted", "role": "Reviewer"}, "expected": false, "note": "reviewer cannot submit for the applicant"},
+  {"id": "S1-09", "rule": "S1", "input": {"from": "Draft", "to": "Approved", "role": "Reviewer"}, "expected": false, "note": "cannot skip steps"},
+  {"id": "S1-14", "rule": "S1", "input": {"from": "UnderReview", "to": "Rejected", "role": "Admin"}, "expected": false, "note": "admin does not decide"},
+  {"id": "S1-16", "rule": "S1", "input": {"from": "Approved", "to": "UnderReview", "role": "Reviewer"}, "expected": false, "note": "approved is final for reviewers"},
+  {"id": "S1-18", "rule": "S1", "input": {"from": "Rejected", "to": "UnderReview", "role": "Applicant"}, "expected": false, "note": "applicant cannot reopen"},
+  {"id": "S1-20", "rule": "S1", "input": {"from": "MoreInfoNeeded", "to": "Submitted", "role": "Reviewer"}, "expected": false, "note": "only the applicant resubmits"}
+]
