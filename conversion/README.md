@@ -41,14 +41,14 @@ library directly.
 
 ## Parity method
 
-1. The 60 vectors in `legacy-logic/test-vectors/` are the contract. Each is
+1. The 61 vectors in `legacy-logic/test-vectors/` are the contract. Each is
    `{ id, rule, input, expected, note }`.
-2. The xUnit tests run them against the C# library (61 tests: 60 vectors plus
+2. The xUnit tests run them against the C# library (62 tests: 61 vectors plus
    one check that the vector set is well formed).
-3. `rules.test.js` runs the same files against `rules.js` (64 tests: 60
+3. `rules.test.js` runs the same files against `rules.js` (65 tests: 61
    vectors, a well-formedness check, and rounding tests described below).
 4. `run-parity.sh` runs both and writes `parity-report.md`. Current result:
-   60 of 60 vectors match.
+   61 of 61 vectors match.
 
 Run it with:
 
