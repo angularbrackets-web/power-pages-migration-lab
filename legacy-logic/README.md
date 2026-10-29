@@ -9,6 +9,9 @@ against the same test vectors.
 The library targets netstandard2.0 and is written in a plain, older style:
 static classes, enums, XML doc comments. Tests use xUnit on net10.0.
 
+The library and test vectors were drafted with AI assistance (Claude Code) to
+serve as the lab's fictional legacy baseline.
+
 ## Rules
 
 | ID | Rule | Class |
