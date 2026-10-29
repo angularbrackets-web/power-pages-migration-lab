@@ -35,7 +35,7 @@ F5 is deliberate: fees use `decimal`, and half-cent cases (for example
 
 ## Test vectors
 
-`test-vectors/*.json` hold 60 shared cases, one file per rule group. Each case
+`test-vectors/*.json` hold 61 shared cases, one file per rule group. Each case
 is `{ id, rule, input, expected, note }`. The xUnit tests load these files, so
 another implementation can run the exact same files. Dates are ISO strings;
 errors are expected as `{ "error": "invalid_category" }` or

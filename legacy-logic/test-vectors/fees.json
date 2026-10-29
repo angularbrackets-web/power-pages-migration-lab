@@ -13,5 +13,6 @@
   {"id": "F5-01", "rule": "F5", "input": {"category": "Sports", "expectedAttendance": 50, "isRegisteredNonProfit": true, "isLateException": false}, "expected": 75.08, "note": "75.075 rounds up to 75.08 (half-up)"},
   {"id": "F5-02", "rule": "F5", "input": {"category": "Sports", "expectedAttendance": 200, "isRegisteredNonProfit": true, "isLateException": false}, "expected": 125.08, "note": "125.075 rounds up to 125.08"},
   {"id": "F5-04", "rule": "F5", "input": {"category": "Community", "expectedAttendance": 50, "isRegisteredNonProfit": true, "isLateException": false}, "expected": 25.0, "note": "22.75 raised to the 25.00 minimum"},
-  {"id": "F5-07", "rule": "F5", "input": {"category": "Sports", "expectedAttendance": 600, "isRegisteredNonProfit": true, "isLateException": true}, "expected": 550.08, "note": "all rules at once"}
+  {"id": "F5-07", "rule": "F5", "input": {"category": "Sports", "expectedAttendance": 600, "isRegisteredNonProfit": true, "isLateException": true}, "expected": 550.08, "note": "all rules at once"},
+  {"id": "F5-08", "rule": "F5", "input": {"category": "Sports", "expectedAttendance": 0, "isRegisteredNonProfit": true, "isLateException": true}, "expected": 150.08, "note": "150.075 must round to 150.08; naive Math.round(x*100)/100 gives 150.07"}
 ]

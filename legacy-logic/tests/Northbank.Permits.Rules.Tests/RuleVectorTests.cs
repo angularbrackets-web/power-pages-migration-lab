@@ -134,7 +134,7 @@ namespace Northbank.Permits.Rules.Tests
         public void VectorSetIsWellFormed()
         {
             List<VectorCase> all = VectorFile.LoadAll();
-            Assert.InRange(all.Count, 40, 60);
+            Assert.InRange(all.Count, 40, 80);
             Assert.Equal(all.Count, all.Select(c => c.Id).Distinct().Count());
 
             string[] rules = { "E1", "E2", "E3", "V1", "V2", "V3", "V4", "F1", "F2", "F3", "F4", "F5", "S1" };
