@@ -1,0 +1,39 @@
+{% comment %}
+  Web template: "Northbank Legacy Page Details"
+
+  Deliberately written in the old standard-data-model (Adxstudio-era) style
+  to exercise the data model migration. It reads the current page straight
+  from the adx_webpage table with entities['adx_webpage'] and shows a custom
+  column (nb_legacynote) that was added to adx_webpage. Neither pattern is
+  carried over by the migration tool on its own.
+
+  Used as the web template behind a page template (Type = Web Template,
+  Use Website Header and Footer = checked).
+  Create the "Northbank Legacy Page List" web template first, because this
+  one includes it at the bottom.
+{% endcomment %}
+
+{% assign legacy_page = entities['adx_webpage'][page.id] %}
+
+<div class="container">
+  <div class="page-header">
+    <h1>{{ page.title | escape }}</h1>
+  </div>
+
+  {% if legacy_page %}
+    <div class="panel panel-default">
+      <div class="panel-heading">Page record (adx_webpage)</div>
+      <div class="panel-body">
+        <p>Name: {{ legacy_page.adx_name | escape }}</p>
+        <p>Partial URL: {{ legacy_page.adx_partialurl | escape }}</p>
+        <p>Legacy note: {{ legacy_page.nb_legacynote | default: '(empty)' | escape }}</p>
+      </div>
+    </div>
+  {% else %}
+    <p>No adx_webpage record was found for this page.</p>
+  {% endif %}
+
+  {% include 'Page Copy' %}
+
+  {% include 'Northbank Legacy Page List' %}
+</div>

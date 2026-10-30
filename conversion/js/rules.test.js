@@ -1,4 +1,4 @@
-// Run with: node --test conversion/js
+// Run with: node --test conversion/js/rules.test.js
 // Loads the shared vectors used by the C# tests and checks every case.
 'use strict';
 const test = require('node:test');

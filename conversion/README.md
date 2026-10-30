@@ -12,6 +12,7 @@ shared vectors. Passing the vectors is the evidence, not the authorship.
 |------|-----------|
 | `js/rules.js` | The port. One file, no dependencies. Works in a browser (global `NorthbankRules`) and in Node (`require`). Rule IDs are in the comments. |
 | `js/rules.test.js` | `node --test` suite. Loads `legacy-logic/test-vectors/*.json` and checks every case. |
+| `server-logic/` | The trusted rules (E1-E3, F1-F5, S1) as Power Pages server logic, generated from the marked regions of `js/rules.js`. See [server-logic/README.md](server-logic/README.md). |
 | `parity/run-parity.sh` | Runs `dotnet test` and the JS tests, then writes the report. |
 | `parity/build-report.js` | Builds `parity/parity-report.md` from the C# TRX output and the JS results. |
 | `parity/parity-report.md` | One row per vector: C# result, JS result, match. |
@@ -35,9 +36,15 @@ Dataverse plugin, or a Power Automate flow. Liquid is for display only.
 | F1-F5 | Fee calculation | Preview only | Yes, calculate and store the fee | Show the stored fee |
 | S1 | Status transitions by role | Hide buttons | Yes, plugin or flow checks role and transition | Show status text |
 
-Rules in the "trusted" column can reuse `rules.js` as is if the server
-logic runs JavaScript. A Dataverse plugin is C# and can use the original
-library directly.
+Server logic runs JavaScript (ES2023, no browser APIs), so the trusted
+column reuses the rule code from `rules.js`: `server-logic/build.js` copies
+the `// <shared>` regions into the server logic file, and its tests run the
+same vectors through the server logic entry point with a stubbed runtime.
+What that does and does not prove is in
+[server-logic/README.md](server-logic/README.md). A Dataverse plug-in is C#
+and could use the original library directly. A wider table of where legacy
+C# logic goes is in
+[docs/reference/standard-to-enhanced-mapping.md](../docs/reference/standard-to-enhanced-mapping.md).
 
 ## Parity method
 
@@ -49,6 +56,10 @@ library directly.
    vectors, a well-formedness check, and rounding tests described below).
 4. `run-parity.sh` runs both and writes `parity-report.md`. Current result:
    61 of 61 vectors match.
+5. `run-parity.sh` also checks that the server logic file is up to date and
+   runs `server-logic/server-logic.test.js` (50 tests: the 39 E, F and S
+   vectors plus code and behaviour checks). The result is a line in the
+   report.
 
 Run it with:
 

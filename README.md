@@ -19,10 +19,13 @@ My background is in .NET / C# and in modernizing legacy ASP.NET systems. This re
 ## Progress
 
 - [x] Repo and scope
-- [ ] Developer environment (Power Apps Developer Plan) and sample site
-- [ ] Discovery notes and migration assessment
+- [x] Developer environments (Power Apps Developer Plan)
+- [ ] Sample site on the standard data model
+- [ ] Discovery notes and migration assessment (reference mapping drafted from Microsoft docs: `docs/reference/`)
 - [ ] Enhanced Data Model migration
-- [ ] C# rules to Liquid / JavaScript (with test cases)
+- [x] Legacy C# rules library with shared test cases (`legacy-logic/`)
+- [x] JavaScript and server logic ports, checked against the same test cases (`conversion/`); not yet run on a live site
+- [ ] Liquid conversion on the live site
 - [ ] Multistep form and list rebuild
 - [ ] Table permissions and web roles mapping
 - [ ] CSS / JS refactor

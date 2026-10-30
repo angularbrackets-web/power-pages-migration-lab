@@ -1,0 +1,10 @@
+# Metadata for the server logic record. Layout and keys follow Microsoft's
+# power-platform-skills "add-server-logic" skill (code-site layout,
+# .powerpages-site/server-logic/<name>/). Not yet checked against a site
+# downloaded from the lab environment. Replace the empty role list with the
+# GUIDs of the Northbank Applicant, Reviewer and Admin web roles.
+adx_serverlogic_adx_webrole: []
+description: Trusted Northbank permit rules (eligibility E1-E3, fees F1-F5, status S1).
+display_name: nb-permit-rules
+id: c462efdc-96c1-4928-8687-66a1d0cc0f80
+name: nb-permit-rules

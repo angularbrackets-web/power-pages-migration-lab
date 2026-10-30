@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const rules = require('../js/rules.js');
 
-const [trxPath, dotnetTxt, nodeTxt, outPath] = process.argv.slice(2);
+const [trxPath, dotnetTxt, nodeTxt, outPath, serverLogicTxt] = process.argv.slice(2);
 
 // C# outcome per vector id, read from the TRX (theory display names contain the id).
 const trx = fs.readFileSync(trxPath, 'utf8');
@@ -39,6 +39,9 @@ const csTotal = grab(dotnetTxt, /Total:\s*(\d+)/);
 const csPassed = grab(dotnetTxt, /Passed:\s*(\d+)/);
 const jsTests = grab(nodeTxt, /ℹ tests (\d+)/);
 const jsPass = grab(nodeTxt, /ℹ pass (\d+)/);
+const slLine = serverLogicTxt
+  ? `Server logic tests (\`conversion/server-logic/\`, generated from the same rule code, run in a stubbed runtime): ${grab(serverLogicTxt, /ℹ pass (\d+)/)} of ${grab(serverLogicTxt, /ℹ tests (\d+)/)} passed.`
+  : 'Server logic tests: not run.';
 
 const out = [
   '# Parity report: C# rules vs JavaScript port',
@@ -50,6 +53,8 @@ const out = [
   'against the shared expected value.',
   '',
   `Summary: ${matched} of ${cases.length} vectors match. C# tests: ${csPassed} of ${csTotal} passed. JS tests: ${jsPass} of ${jsTests} passed.`,
+  '',
+  slLine,
   '',
   '| Vector | Rule | Expected | C# | JS | Match |',
   '|--------|------|----------|----|----|-------|',

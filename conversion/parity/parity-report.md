@@ -8,6 +8,8 @@ against the shared expected value.
 
 Summary: 61 of 61 vectors match. C# tests: 62 of 62 passed. JS tests: 65 of 65 passed.
 
+Server logic tests (`conversion/server-logic/`, generated from the same rule code, run in a stubbed runtime): 50 of 50 passed.
+
 | Vector | Rule | Expected | C# | JS | Match |
 |--------|------|----------|----|----|-------|
 | E1-01 | E1 | `true` | pass | pass (`true`) | yes |

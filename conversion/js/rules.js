@@ -1,7 +1,7 @@
 /*
  * Northbank.Permits.Rules ported to plain JavaScript.
- * UMD-style: works in a browser (global NorthbankRules), with require() in
- * Node, and can be pasted into Power Pages server logic or a web file.
+ * UMD-style: works in a browser (global NorthbankRules) and as a Node
+ * module. The server logic copy is generated from the marked regions below.
  *
  * Source of truth: legacy-logic/src/Northbank.Permits.Rules (C#).
  * Rule IDs in comments match the C# library and the shared test vectors.
@@ -9,6 +9,11 @@
  * Dates are ISO strings ("2027-07-01" or "2027-07-01T09:00") and are handled
  * as plain calendar values in UTC, so the result does not depend on the
  * time zone of the browser or server. Money is computed in integer cents.
+ *
+ * The code between "// <shared>" and "// </shared>" markers is copied
+ * verbatim into the Power Pages server logic file by
+ * conversion/server-logic/build.js. Keep those regions free of Node or
+ * browser APIs. See conversion/server-logic/README.md.
  */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -19,6 +24,7 @@
 }(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
+  // <shared>
   var MS_PER_DAY = 86400000;
 
   // ---- date helpers ------------------------------------------------------
@@ -164,6 +170,8 @@
     return calculateFeeCents(category, expectedAttendance, isRegisteredNonProfit, isLateException) / 100;
   }
 
+  // </shared>
+
   // NAIVE version, kept only to document the parity finding. Do not use.
   // It does the same F1-F5 steps with floating point dollars and rounds with
   // Math.round(x * 100) / 100. A half-cent total such as 150.075 is not exactly
@@ -179,6 +187,7 @@
     return total < 25 ? 25 : total;
   }
 
+  // <shared>
   // ---- S: status ---------------------------------------------------------
 
   // S1: allowed status transitions and which role may make them.
@@ -194,6 +203,8 @@
       default: return false;
     }
   }
+
+  // </shared>
 
   // ---- vector runner (shared by the tests and the parity report) ---------
 
